@@ -23,16 +23,18 @@ const styles = StyleSheet.create({
 
 
 export default class Screen extends React.Component {
-    static navigationOptions = {
-        title: 'Create new item',
+    static navigationOptions = ({ navigation }) => {
+        return {
+            title: navigation.getParam('title', 'Item'),
+        };
     };
     render(){
         return (
             <View style={styles.container}>
-                <Text style={styles.welcome}>Create item</Text>
+                <Text style={styles.welcome}>Item screen</Text>
                 <Button
-                    title="Create"
-                    onPress={()=>{}}
+                    title="Create comment"
+                    onPress={() => {}}
                 />
             </View>
         )

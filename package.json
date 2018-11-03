@@ -11,9 +11,13 @@
     "react-native": "0.57.4",
     "react-native-listitem": "^1.0.5",
     "react-native-material-kit": "^0.5.1",
+    "react-native-swipeable": "^0.6.0",
     "react-native-swipeout": "^2.3.6",
+    "react-native-swipeout-longpressforandroid": "^1.0.10",
     "react-navigation": "^2.18.2",
+    "react-redux": "^5.1.0",
     "redux": "^4.0.1",
+    "redux-actions": "^2.6.4",
     "redux-saga": "^0.16.2"
   },
   "devDependencies": {
