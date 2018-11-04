@@ -5,14 +5,12 @@ import Swipeable from 'react-native-swipeable';
 
 export default class Item extends React.Component {
 
-    deleteItem = () => {
-        console.log('Deleting item')
-    }
+    deleteItem = () => {this.props.deleteItem(this.props.item.id)};
     rightButtons = [
         <TouchableOpacity onPress={this.deleteItem} style={styles.deleteButton}>
             <Text>Delete</Text>
         </TouchableOpacity>
-    ]
+    ];
 
     render() {
         const {item, navigation} = this.props;

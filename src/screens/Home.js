@@ -1,20 +1,20 @@
 import React from 'react';
 import {createStackNavigator} from 'react-navigation';
-import Home from '../components/Home';
+import ItemsContainer from '../containers/ItemsContainer';
 import CreateItem from '../components/CreateItem';
-import ItemScreen from '../components/ItemScreen';
+import CommentsContainer from '../containers/CommentsContainer';
 
 
 export default createStackNavigator(
     {
         Home: {
-            screen: Home
+            screen: ItemsContainer
         },
         Create: {
             screen: CreateItem
         },
         Item: {
-            screen: ItemScreen
+            screen: CommentsContainer
         }
     },
     {

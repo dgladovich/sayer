@@ -1,12 +1,31 @@
 import React from 'react';
-import {Platform, StyleSheet, Text, View, Button} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button, TextInput} from 'react-native';
+import {di} from 'redux';
+import {Field, reduxForm} from 'redux-form';
 
+import CreateItemForm from '../forms/CreateItemForm';
+
+
+
+export default class CreateItem extends React.Component {
+    static navigationOptions = {
+        title: 'Create new item',
+    };
+
+    submit = value =>{
+        console.log(this.props, this.state)
+    };
+
+    render() {
+        return (
+            <CreateItemForm/>
+        )
+    }
+}
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
         backgroundColor: '#F5FCFF',
     },
     welcome: {
@@ -20,21 +39,3 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
 });
-
-
-export default class Screen extends React.Component {
-    static navigationOptions = {
-        title: 'Create new item',
-    };
-    render(){
-        return (
-            <View style={styles.container}>
-                <Text style={styles.welcome}>Create item</Text>
-                <Button
-                    title="Create"
-                    onPress={()=>{}}
-                />
-            </View>
-        )
-    }
-}

@@ -2,22 +2,8 @@ import React from 'react';
 import {StyleSheet, Text, View, Button, TouchableOpacity, ScrollView} from 'react-native';
 
 import Item from '../Item'
+import actions from '../../actions';
 
-const mocks = [
-    {title: 'Title1', comments_count: 1},
-    {title: 'Title2', comments_count: 3},
-    {title: 'Title3', comments_count: 5},
-    {title: 'Title1', comments_count: 1},
-    {title: 'Title2', comments_count: 3},
-    {title: 'Title3', comments_count: 5},
-    {title: 'Title1', comments_count: 1},
-    {title: 'Title2', comments_count: 3},
-    {title: 'Title3', comments_count: 5},
-    {title: 'Title1', comments_count: 1},
-    {title: 'Title2', comments_count: 3},
-    {title: 'Title3', comments_count: 5},
-];
- 
 
 export default class Screen extends React.Component {
     static navigationOptions = {
@@ -44,11 +30,13 @@ export default class Screen extends React.Component {
     }
 
     _loadItems = () => {
-    }
+        const {dispatch, fetchItems} = this.props;
+        dispatch(fetchItems());
+    };
 
     render() {
         const {currentlyOpenSwipeable} = this.state;
-        const {navigation} = this.props;
+        const {navigation, items, dispatch} = this.props;
 
         const itemProps = {
             onOpen: (event, gestureState, swipeable) => {
@@ -59,20 +47,22 @@ export default class Screen extends React.Component {
                 this.setState({currentlyOpenSwipeable: swipeable});
             },
             onClose: () => this.setState({currentlyOpenSwipeable: null}),
-            navigation
+            deleteItem: itemId => { dispatch(actions.deleteItem(itemId)) },
+            navigation,
+            dispatch
 
         };
         return (
             <ScrollView style={styles.container} onScroll={this.handleScroll}>
                 {
-                    mocks.map((item, i) => {
+                    items.map((item) => {
                         return (
-                            <Item key={i} item={item} {...itemProps}/>
+                            <Item key={item.id} item={item} {...itemProps}/>
                         )
                     })
                 }
                 <Button
-                    title="Go to Details"
+                    title="Create item"
                     onPress={() => this.props.navigation.navigate('Create')}
                 />
             </ScrollView>

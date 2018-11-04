@@ -1,17 +1,18 @@
 import {createActions} from 'redux-actions'
 import {
     REQUEST_ITEMS,
+    REQUEST_COMMENTS,
     ADD_ITEM,
     DELETE_ITEM,
     ADD_COMMENT,
-    DELETE_COMMENT
 } from '../constants'
 
 
-export const actions = createActions(
-    'REQUEST_ITEMS',
-    'ADD_ITEM',
-    'DELETE_ITEM',
-    'ADD_COMMENT',
+export default createActions(
+    REQUEST_ITEMS,
+    REQUEST_COMMENTS,
+    ADD_ITEM,
+    DELETE_ITEM,
+    ADD_COMMENT,
 );
 
