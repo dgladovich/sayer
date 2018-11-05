@@ -1,5 +1,6 @@
 import React from 'react';
 import {Platform, StyleSheet, Text, View, ScrollView, Button} from 'react-native';
+import {reset} from 'redux-form';
 
 import CreateCommentForm from '../forms/CreateCommentForm';
 import CommentsList from '../comments/CommentsList';
@@ -13,7 +14,6 @@ export default class Screen extends React.Component {
     };
     componentDidMount(){
         const {dispatch, fetchComments, navigation} = this.props;
-        console.log(fetchComments({itemID: navigation.state.params.id}))
         dispatch(fetchComments({itemID: navigation.state.params.id}));
     }
     handleSubmit = (values) => {
@@ -21,7 +21,9 @@ export default class Screen extends React.Component {
         dispatch(addComment({
             parentId: navigation.state.params.id,
             text: values.commentText
-        }))
+        }));
+        dispatch(reset('comment'));
+
     };
 
     render() {

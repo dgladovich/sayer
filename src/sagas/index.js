@@ -16,10 +16,11 @@ import {
     REQUEST_COMMENTS_SUCCESS,
     REQUEST_COMMENTS_ERROR,
     INCREMENT_COMMENTS_COUNT,
+    ACTIVATE_LOADER,
 } from '../constants'
 import Api from '../api'
 
-function* fetchItems(action) {
+function* fetchItems() {
     try {
         const items = yield call(Api.fetchItems);
         yield put({type: REQUEST_ITEMS_SUCCESS, items: items});
@@ -55,7 +56,7 @@ function* addComment(action) {
 
 function* deleteItem(action) {
     try {
-        yield call(Api.deleteItem);
+        yield call(Api.deleteItem, action.payload);
         yield put({type: DELETE_ITEM_SUCCESS, item: action.payload});
     } catch (e) {
         yield put({type: DELETE_ITEM_ERROR, message: e.message});

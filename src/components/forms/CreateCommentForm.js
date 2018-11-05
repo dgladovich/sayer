@@ -3,7 +3,7 @@ import {StyleSheet, View, Button, TextInput} from 'react-native';
 import {Field, reduxForm} from 'redux-form';
 
 const renderInput = ({ input: { onChange, ...restInput }}) => {
-    return <TextInput style={styles.input} onChangeText={onChange} {...restInput} />
+    return <TextInput style={styles.input} onChangeText={onChange} {...restInput} blurOnSubmit={false}/>
 };
 
 const validate = values => {
@@ -34,6 +34,8 @@ const CreateComment = props => {
                 type="text"
             />
             <Button
+                keyboardShouldPersistTaps="always"
+                keyboardDismissMode="on-drag"
                 title="Create"
                 onPress={handleSubmit}
             />

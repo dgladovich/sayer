@@ -45,7 +45,10 @@ const CreateItem = props => {
 
 export default reduxForm({
     form: 'item',
-    onSubmit: (values, dispatch)=>{dispatch(actions.addItem({title: values.itemTitle}))},
+    onSubmit: (values, dispatch, props)=>{
+        dispatch(actions.addItem({title: values.itemTitle}));
+        props.navigation.navigate('Home')
+    },
     validate
 })(CreateItem)
 

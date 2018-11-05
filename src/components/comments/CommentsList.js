@@ -4,12 +4,20 @@ import {StyleSheet, Text, View, ScrollView, Button} from 'react-native';
 import Comment from './Comment';
 
 export default class Screen extends React.Component {
+    componentDidUpdate(){
+        this.refs.scrollView.scrollTo({y: 0});
+    }
     render() {
         const {comments} = this.props;
         return (
-            <ScrollView>
+            <ScrollView
+                keyboardDismissMode="on-drag"
+                keyboardShouldPersistTaps="always"
+                ref="scrollView"
+
+            >
                 {
-                    comments.map( comment => {
+                    comments.map(comment => {
                         return (
                             <Comment key={comment.id} item={comment}/>
                         )

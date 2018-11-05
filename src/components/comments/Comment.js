@@ -6,7 +6,8 @@ export default class Screen extends React.Component {
     render() {
         const {item} = this.props;
         return (
-            <View>
+            <View style={styles.commentBlock}>
+                <View style={styles.avatar}/>
                 <Text>{item.text}</Text>
             </View>
         )
@@ -14,21 +15,15 @@ export default class Screen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
+    commentBlock: {
+        width: '90%',
+        textAlign: 'left',
         flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        flexDirection: 'row',
     },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
+    avatar: {
+        width: 50,
+        height: 50,
+        backgroundColor: 'pink',
+    }
 });

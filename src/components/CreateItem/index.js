@@ -12,13 +12,11 @@ export default class CreateItem extends React.Component {
         title: 'Create new item',
     };
 
-    submit = value =>{
-        console.log(this.props, this.state)
-    };
 
     render() {
+        const {navigation} = this.props;
         return (
-            <CreateItemForm/>
+            <CreateItemForm navigation={navigation}/>
         )
     }
 }

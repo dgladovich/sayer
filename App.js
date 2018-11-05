@@ -9,19 +9,17 @@
 import React, {Component} from 'react';
 import { Provider } from 'react-redux';
 
-
 import configureStore from './src/configureStore';
-import Screen from './src/screens/Home'
+import MainContainer from './src/containers/MainContainer'
 
 const store = configureStore();
-
 
 type Props = {};
 export default class App extends Component<Props> {
     render() {
         return (
             <Provider store={store}>
-                <Screen/>
+                <MainContainer/>
             </Provider>
         );
     }
