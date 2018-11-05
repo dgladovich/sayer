@@ -4,12 +4,19 @@ import {reset} from 'redux-form';
 
 import CreateCommentForm from '../forms/CreateCommentForm';
 import CommentsList from '../comments/CommentsList';
+import BackButton from '../buttons/BackButton';
+import HeaderTitle from '../Header/ItemTitle';
 
 
 export default class Screen extends React.Component {
     static navigationOptions = ({navigation}) => {
         return {
-            title: navigation.getParam('title', 'Item'),
+            headerTitle: <HeaderTitle navigation={navigation}/>,
+            headerTitleStyle: {
+                marginLeft: 20
+            },
+            headerLeft: props => <BackButton {...props}/>,
+
         };
     };
     componentDidMount(){
@@ -43,7 +50,9 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         backgroundColor: '#F5FCFF',
+        paddingTop: 20
     },
+
     welcome: {
         fontSize: 20,
         textAlign: 'center',

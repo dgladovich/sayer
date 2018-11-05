@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View, Button, TouchableOpacity, ScrollView, Dimensions} from 'react-native';
 
 import Item from '../Item'
+import Header from '../Header';
 import actions from '../../actions';
 
 const width = Dimensions.get('window').width;
@@ -10,7 +11,7 @@ const buttonMargin = width * 0.08;
 
 export default class Screen extends React.Component {
     static navigationOptions = {
-        title: 'Sayer',
+        headerTitle: <Header/>,
     };
     state = {
         currentlyOpenSwipeable: null

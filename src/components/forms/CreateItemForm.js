@@ -1,7 +1,9 @@
 import React from 'react';
 import {StyleSheet, View, Button, TextInput} from 'react-native';
 import {Field, reduxForm} from 'redux-form';
+
 import actions from '../../actions';
+import SubmitButton from '../buttons/SubmitButton';
 
 const renderInput = ({input: {onChange, ...restInput}}) => {
     return <TextInput style={styles.input} onChangeText={onChange} {...restInput} />
@@ -34,10 +36,8 @@ const CreateItem = props => {
                 component={renderInput}
                 type="text"
             />
-            <Button
-                title="Create"
-                onPress={handleSubmit}
-            />
+            <SubmitButton onPress={handleSubmit}/>
+
         </View>
     )
 };
@@ -54,12 +54,18 @@ export default reduxForm({
 
 const styles = StyleSheet.create({
     container: {
+        marginTop: 20,
         flexDirection: 'row',
         justifyContent: 'center',
-        backgroundColor: '#F5FCFF',
+        //backgroundColor: '#F5FCFF',
+        paddingLeft: 20,
+        paddingRight: 20
     },
     input: {
-        width: '80%'
+        width: '80%',
+        fontSize: 20,
+        borderBottomWidth: 1,
+        borderBottomColor: '#333333'
     },
     welcome: {
         fontSize: 20,

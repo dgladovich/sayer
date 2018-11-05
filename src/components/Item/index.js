@@ -4,8 +4,8 @@ import Swipeable from 'react-native-swipeable';
 
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
-const commentDiameter = width * 0.12;
-const paddingValue = height * 0.12 / 2;
+const commentDiameter = width * 0.15;
+const itemHeight = height * 0.12;
 const deleteButtonWidth = width * 0.3;
 
 export default class Item extends React.Component {
@@ -47,15 +47,14 @@ const styles = StyleSheet.create({
     item: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        paddingBottom: paddingValue,
-        paddingTop: paddingValue,
+        height: itemHeight,
         paddingLeft: '10%',
-        paddingRight: '10%',
+        paddingRight: '5%',
         borderBottomColor: '#d9d9d9',
-        borderBottomWidth: 1
+        borderBottomWidth: 0.2
     },
     comments: {
-        fontSize: 30,
+        fontSize: 25,
         color: '#fff',
         backgroundColor: '#313464',
         height: commentDiameter,
@@ -66,19 +65,22 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     title: {
+        alignSelf: 'center',
         color: '#2b2f3e',
-        fontSize: 30
+        fontSize: 25,
+        width: '80%'
     },
     deleteButton: {
         backgroundColor: '#d4145a',
         borderBottomColor: '#fff',
         borderBottomWidth: 1,
-        paddingBottom: paddingValue,
-        paddingTop: paddingValue,
+        height: itemHeight,
     },
     deleteButtonText: {
-        fontSize: 30,
-        paddingLeft: 10,
+        flexDirection: 'column',
+        fontSize: 25,
+        lineHeight: itemHeight,
+        paddingLeft: 15,
         color: '#fff'
 
     }

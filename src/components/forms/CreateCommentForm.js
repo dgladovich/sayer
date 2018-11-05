@@ -2,30 +2,33 @@ import React from 'react';
 import {StyleSheet, View, Button, TextInput} from 'react-native';
 import {Field, reduxForm} from 'redux-form';
 
-const renderInput = ({ input: { onChange, ...restInput }}) => {
+import SubmitButton from '../buttons/SubmitButton';
+
+const renderInput = ({input: {onChange, ...restInput}}) => {
     return <TextInput style={styles.input} onChangeText={onChange} {...restInput} blurOnSubmit={false}/>
 };
 
-const validate = values => {
+const validate = (values, next) => {
+
+    console.log(values, next);
     const error = {};
-    error.title = '';
-    let title = values.title;
 
-    if (values.title === undefined) {
-        title = '';
+    if(!values){
+        return error;
     }
+    error.title = '';
 
-    if (title.length < 8 && title !== '') {
+
+
+    if (values.length < 3) {
         error.title = 'too short';
     }
 
-
-    return error;
+    return {} ;
 };
 
 const CreateComment = props => {
     const {handleSubmit} = props;
-
     return (
         <View style={styles.container}>
             <Field
@@ -33,10 +36,10 @@ const CreateComment = props => {
                 component={renderInput}
                 type="text"
             />
-            <Button
+            <SubmitButton
+                disabled={false}
                 keyboardShouldPersistTaps="always"
                 keyboardDismissMode="on-drag"
-                title="Create"
                 onPress={handleSubmit}
             />
         </View>
@@ -46,14 +49,16 @@ const CreateComment = props => {
 
 export default reduxForm({
     form: 'comment',
-    validate
 })(CreateComment)
 
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        backgroundColor: '#F5FCFF',
+        backgroundColor: '#e6e6e6',
+        padding: 7,
+        paddingLeft: 7,
+        paddingRight: 15
     },
     welcome: {
         fontSize: 20,
@@ -61,7 +66,12 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     input: {
-      width: '80%'
+        width: '80%',
+        backgroundColor: '#fff',
+        fontSize: 20,
+        borderWidth: 1,
+        borderColor: '#cccccc',
+        paddingLeft: 15
     },
     instructions: {
         textAlign: 'center',

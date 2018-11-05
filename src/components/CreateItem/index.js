@@ -1,15 +1,20 @@
 import React from 'react';
 import {Platform, StyleSheet, Text, View, Button, TextInput} from 'react-native';
-import {di} from 'redux';
 import {Field, reduxForm} from 'redux-form';
 
 import CreateItemForm from '../forms/CreateItemForm';
+import BackButton from '../../components/buttons/BackButton';
 
 
 
 export default class CreateItem extends React.Component {
     static navigationOptions = {
         title: 'Create new item',
+        headerLeft: props => <BackButton {...props}/>,
+        headerTitleStyle: {
+            fontSize: 25,
+            paddingLeft: 15
+        }
     };
 
 

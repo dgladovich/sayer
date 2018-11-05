@@ -7,12 +7,14 @@ import Home from '../../screens/Home';
 export default class Main extends React.Component {
     render() {
         const {appState} = this.props;
-        return (
+        return ( 
             <React.Fragment>
-                <Home/>
+                <Home style={{backgroundColor: '#fff' }}/>
                 <Spinner visible={appState.isLoading}/>
             </React.Fragment>
         )
     }
 }
+
+
 

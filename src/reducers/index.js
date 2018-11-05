@@ -44,14 +44,14 @@ function commentsReducer(state = [], action) {
     }
 }
 
-function appReducer(state = {isLoading: true}, action) {
+function appReducer(state = {isLoading: false}, action) {
     switch (action.type) {
-        case ADD_ITEM:
+/*        case ADD_ITEM:
         case ADD_COMMENT:
         case REQUEST_ITEMS:
         case REQUEST_COMMENTS:
         case DELETE_ITEM:
-            return {isLoading: true};
+            return {isLoading: true};*/
         case ADD_COMMENT_SUCCESS:
         case ADD_ITEM_SUCCESS:
         case REQUEST_COMMENTS_SUCCESS:
