@@ -4,26 +4,12 @@ import {Field, reduxForm} from 'redux-form';
 
 import actions from '../../actions';
 import SubmitButton from '../buttons/SubmitButton';
+import {minValue} from "./validate";
 
 const renderInput = ({input: {onChange, ...restInput}}) => {
-    return <TextInput style={styles.input} onChangeText={onChange} {...restInput} />
+    return <TextInput style={styles.input} onChangeText={onChange} placeholder="Your text here..." {...restInput} />
 };
-const validate = values => {
-    const error = {};
-    error.title = '';
-    let title = values.title;
 
-    if (values.title === undefined) {
-        title = '';
-    }
-
-    if (title.length < 8 && title !== '') {
-        error.title = 'too short';
-    }
-
-
-    return error;
-};
 
 const CreateItem = props => {
 
@@ -32,11 +18,15 @@ const CreateItem = props => {
     return (
         <View style={styles.container}>
             <Field
+                validate={[minValue]}
                 name="itemTitle"
                 component={renderInput}
                 type="text"
             />
-            <SubmitButton onPress={handleSubmit}/>
+            <SubmitButton
+                disabled={props.invalid}
+                onPress={handleSubmit}
+            />
 
         </View>
     )
@@ -45,11 +35,10 @@ const CreateItem = props => {
 
 export default reduxForm({
     form: 'item',
-    onSubmit: (values, dispatch, props)=>{
+    onSubmit: (values, dispatch, props) => {
         dispatch(actions.addItem({title: values.itemTitle}));
         props.navigation.navigate('Home')
-    },
-    validate
+    }
 })(CreateItem)
 
 const styles = StyleSheet.create({

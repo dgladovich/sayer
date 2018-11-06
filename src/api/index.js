@@ -3,25 +3,7 @@ const WAIT = 20;
 const ID = ()=> '_' + Math.random().toString(36).substr(2, 9);
 
 let comments = [],
-    items = [
-        {
-            id: "_zvbqi6ifr",
-            title: 'Title 1',
-            comments_count: 0
-        }, {
-            id: "_ybc3av5wm",
-            title: 'Title 2',
-            comments_count: 0
-        }, {
-            id: "_qy465drhk",
-            title: 'Title 3',
-            comments_count: 0
-        }, {
-            id: "_2kgq0762d",
-            title: 'Title 4',
-            comments_count: 0
-        },
-    ];
+    items = [];
 
 
 function fetchItems() {

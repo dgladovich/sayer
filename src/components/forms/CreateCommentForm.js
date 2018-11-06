@@ -3,28 +3,10 @@ import {StyleSheet, View, Button, TextInput} from 'react-native';
 import {Field, reduxForm} from 'redux-form';
 
 import SubmitButton from '../buttons/SubmitButton';
+import {minValue} from "./validate";
 
 const renderInput = ({input: {onChange, ...restInput}}) => {
-    return <TextInput style={styles.input} onChangeText={onChange} {...restInput} blurOnSubmit={false}/>
-};
-
-const validate = (values, next) => {
-
-    console.log(values, next);
-    const error = {};
-
-    if(!values){
-        return error;
-    }
-    error.title = '';
-
-
-
-    if (values.length < 3) {
-        error.title = 'too short';
-    }
-
-    return {} ;
+    return <TextInput style={styles.input} onChangeText={onChange} {...restInput} placeholder="Your text here..." blurOnSubmit={false}/>
 };
 
 const CreateComment = props => {
@@ -32,12 +14,13 @@ const CreateComment = props => {
     return (
         <View style={styles.container}>
             <Field
+                validate={[minValue]}
                 name="commentText"
                 component={renderInput}
                 type="text"
             />
             <SubmitButton
-                disabled={false}
+                disabled={props.invalid}
                 keyboardShouldPersistTaps="always"
                 keyboardDismissMode="on-drag"
                 onPress={handleSubmit}
